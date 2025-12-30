@@ -39,6 +39,13 @@ theme = "stack"
   wordCount = true
   showSummary = true
 
+[[menu.social]]
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/kobespecial/therealhan-blog"
+  [menu.social.params]
+    icon = "brand-github"
+
 [[menu.main]]
   name = "主页"
   url = "/"

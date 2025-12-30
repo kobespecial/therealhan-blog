@@ -1,5 +1,6 @@
 baseURL = "https://therealhan.com/"
 languageCode = "zh-CN"
+defaultContentLanguage = "zh-cn"
 title = "寒仔的学术笔记"
 theme = "stack"
 
@@ -9,6 +10,7 @@ theme = "stack"
     rssFullContent = true
     lazyImage = true
     defaultTheme = "dark"
+    # customCSS = ["scss/custom.scss"]
 
 [params.math]
   enable = true
@@ -38,6 +40,18 @@ theme = "stack"
   readingTime = true
   wordCount = true
   showSummary = true
+
+[[params.widgets.page]]
+  type = "toc"
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]
+
+[markup.goldmark.extensions.extras.mark]
+  enable = true
 
 [[menu.social]]
   identifier = "github"

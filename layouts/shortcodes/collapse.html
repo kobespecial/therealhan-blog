@@ -1,0 +1,6 @@
+<details {{ with .Get "open" }}open{{ end }}>
+    <summary>{{ .Get "title" | default "点击展开代码" }}</summary>
+    <div>
+        {{ .Inner | markdownify }}
+    </div>
+</details>

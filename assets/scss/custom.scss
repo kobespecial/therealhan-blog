@@ -1,7 +1,28 @@
+/* Custom fonts */
+:root {
+    --base-font-family: "Palatino", "PingFang SC", "Microsoft YaHei", serif !important;
+    --article-font-family: "Palatino", "PingFang SC", "Microsoft YaHei", serif !important;
+    --code-font-family: "Maple Mono NF", "Menlo", "Monaco", "Courier New", monospace !important;
+}
+
+code,
+pre,
+.chroma,
+.article-content code,
+.article-content pre,
+.article-content .chroma {
+    font-family: var(--code-font-family) !important;
+    font-feature-settings: "liga" 1, "calt" 1;
+    -webkit-font-feature-settings: "liga" 1, "calt" 1;
+    -moz-font-feature-settings: "liga" 1, "calt" 1;
+}
+
 /* Custom styles for article summary */
 .article-summary {
     margin-top: 0.75rem;
-    color: var(--card-text-color-secondary);
+    color: var(
+        --card-text-color-secondary
+    );
     font-size: 0.95rem;
     line-height: 1.6;
 
@@ -12,4 +33,73 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+}
+
+// Highlight for ==marked text==
+mark {
+    background-color: rgba(
+        255,
+        215,
+        0,
+        0.35
+    );
+    color: inherit;
+    padding: 0.1em
+        0.25em;
+    border-radius: 4px;
+}
+
+html[data-theme="dark"]
+    mark {
+    background-color: rgba(
+        255,
+        215,
+        0,
+        0.22
+    );
+}
+
+/* Collapsible code blocks */
+.article-content details {
+    margin: 1.5rem 0;
+    border: 1px solid var(--card-border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.article-content details summary {
+    padding: 0.75rem 1rem;
+    background: var(--card-background-color);
+    cursor: pointer;
+    font-weight: 500;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.article-content details summary:hover {
+    background: var(--card-separator-color);
+}
+
+.article-content details summary::-webkit-details-marker {
+    display: none;
+}
+
+.article-content details summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform 0.2s;
+    font-size: 0.8em;
+}
+
+.article-content details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.article-content details[open] summary {
+    border-bottom: 1px solid var(--card-border-color);
+}
+
+.article-content details > div {
+    padding: 1rem;
 }

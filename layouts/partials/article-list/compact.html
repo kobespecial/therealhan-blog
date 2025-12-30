@@ -1,0 +1,69 @@
+<article class="article-card">
+    <div class="article-card-link">
+        <div class="article-details">
+            <h2 class="article-title">
+                <a href="{{ .RelPermalink }}">{{- .Title -}}</a>
+            </h2>
+
+            {{ with .Summary }}
+            <p class="article-summary">{{ . | plainify | truncate 200 }}</p>
+            {{ end }}
+
+            <footer class="article-meta">
+                <div class="article-meta-left">
+                    <div class="meta-item">
+                        {{ partial "helper/icon" "date" }}
+                        <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                            {{- .Date | time.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                        </time>
+                    </div>
+                    <div class="meta-item">
+                        {{ partial "helper/icon" "clock" }}
+                        <span>{{ T "article.readingTime" .ReadingTime }}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span>{{ .WordCount }} 字</span>
+                    </div>
+                </div>
+                <div class="article-meta-right">
+                    {{ if .Params.categories }}
+                    <div class="article-category">
+                        {{ range (.GetTerms "categories") }}
+                            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                    {{ partial "article/components/tags" . }}
+                </div>
+            </footer>
+        </div>
+
+        {{- $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" -}}
+        {{ if $image.exists }}
+            <div class="article-image">
+                <a href="{{ .RelPermalink }}">
+                    {{ if $image.resource }}
+                        {{- $Permalink := $image.resource.RelPermalink -}}
+                        {{- $Width := $image.resource.Width -}}
+                        {{- $Height := $image.resource.Height -}}
+
+                        {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                            {{- $thumbnail := $image.resource.Fill "200x200" -}}
+                            {{- $Permalink = $thumbnail.RelPermalink -}}
+                            {{- $Width = $thumbnail.Width -}}
+                            {{- $Height = $thumbnail.Height -}}
+                        {{- end -}}
+
+                        <img src="{{ $Permalink }}"
+                            width="{{ $Width }}"
+                            height="{{ $Height }}"
+                            alt="{{ .Title }}"
+                            loading="lazy">
+                    {{ else }}
+                        <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
+                    {{ end }}
+                </a>
+            </div>
+        {{ end }}
+    </div>
+</article>

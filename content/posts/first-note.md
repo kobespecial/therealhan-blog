@@ -2,7 +2,7 @@
 title: "医保制度对创新药激励作用的研究：基于动态优化的视角"
 summary: "本文构建一个动态模型，分析医保支付方式对创新药研发激励的长期影响。"
 date: 2025-12-29
-draft: false
+draft: true
 toc: true
 math: true
 categories:

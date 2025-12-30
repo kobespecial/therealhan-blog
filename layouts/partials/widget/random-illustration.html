@@ -1,0 +1,44 @@
+{{/* Random anime illustration widget with client-side fetch */}}
+<section class="widget random-illustration" data-widget="random-illustration">
+    <div class="random-illustration__header">
+        <span class="random-illustration__title">Random Anime</span>
+        <button type="button" class="random-illustration__refresh" aria-label="Refresh illustration">↻</button>
+    </div>
+    <div class="random-illustration__frame">
+        <div class="random-illustration__placeholder">Loading…</div>
+        <img class="random-illustration__img" alt="Random anime illustration" loading="lazy" decoding="async" />
+    </div>
+</section>
+<script>
+(() => {
+    const widget = document.currentScript.previousElementSibling;
+    const img = widget.querySelector('.random-illustration__img');
+    const placeholder = widget.querySelector('.random-illustration__placeholder');
+    const refreshBtn = widget.querySelector('.random-illustration__refresh');
+
+    function setImage(url) {
+        placeholder.style.display = 'flex';
+        placeholder.textContent = 'Loading…';
+        img.style.opacity = '0';
+        img.src = url;
+    }
+
+    function randomUrl() {
+        const cacheBust = Date.now();
+        return `https://source.unsplash.com/600x900/?anime,illustration&rand=${cacheBust}`;
+    }
+
+    img.addEventListener('load', () => {
+        placeholder.style.display = 'none';
+        img.style.opacity = '1';
+    });
+
+    img.addEventListener('error', () => {
+        // Last-ditch fallback
+        setImage(`https://picsum.photos/600/900?random=${Math.random()}`);
+    });
+
+    refreshBtn.addEventListener('click', () => setImage(randomUrl()));
+    setImage(randomUrl());
+})();
+</script>

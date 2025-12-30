@@ -1,0 +1,10 @@
+{{ $image := partialCached "helper/image" (dict "Context" . "Type" "articleList") .RelPermalink "articleList" }}
+{{ $showSummary := .Site.Params.article.showSummary }}
+<article class="{{ if $image.exists }}has-image{{ end }}">
+    {{ partial "article/components/header" . }}
+    {{ if and $showSummary .Summary }}
+    <div class="article-summary">
+        <p>{{ .Summary }}</p>
+    </div>
+    {{ end }}
+</article>

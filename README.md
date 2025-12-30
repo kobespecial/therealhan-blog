@@ -35,6 +35,7 @@
 .
 ├── content/            # 博客正文（Markdown 原稿）
 │   └── posts/           # 学术笔记文章
+│   └── publications/           # 论文发表记录
 ├── assets/             # 主题资源（头像、样式等）
 ├── static/             # 静态资源（不经 Hugo 处理）
 ├── themes/             # Hugo 主题（Stack）

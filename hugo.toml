@@ -1,0 +1,43 @@
+baseURL = "https://therealhan.com/"
+languageCode = "zh-CN"
+title = "寒仔的学术笔记"
+theme = "stack"
+
+[params]
+    mainSections = ["posts"]
+    featuredImageField = "image"
+    rssFullContent = true
+    lazyImage = true
+    defaultTheme = "dark"
+
+[params.math]
+  enable = true
+  use = "katex"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[markup.highlight]
+  codeFences = true
+  guessSyntax = true
+  lineNos = true
+  noClasses = false
+  style = "github-dark"
+
+[params.sidebar.avatar]
+  enabled = true
+  local = true
+  src = "img/avatar.jpg"
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 4
+
+[params.article]
+  readingTime = true
+  wordCount = true
+  showSummary = true
+
+[outputs]
+  home = ["HTML", "RSS"]

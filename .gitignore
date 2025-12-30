@@ -1,0 +1,14 @@
+# Hugo build output
+/public/
+
+# Hugo caches
+/resources/
+.hugo_build.lock
+
+# OS / editor junk
+.DS_Store
+.vscode/
+.idea/
+
+# Node (if you ever use it)
+node_modules/

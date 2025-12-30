@@ -1,0 +1,15 @@
+/* Custom styles for article summary */
+.article-summary {
+    margin-top: 0.75rem;
+    color: var(--card-text-color-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+
+    p {
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}

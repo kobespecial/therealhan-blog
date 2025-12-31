@@ -1,7 +1,7 @@
 ---
 date: "2025-12-30T11:25:27+08:00"
 draft: false
-title: "MLE 法"
+title: "结构估计──MLE法"
 toc: true
 math: true
 slug: MLE

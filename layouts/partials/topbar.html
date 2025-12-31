@@ -1,0 +1,33 @@
+<header class="topbar">
+    <div class="topbar__inner">
+        <a class="topbar__brand" href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a>
+
+        <nav class="topbar__menu" aria-label="Primary">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+                {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+                <a class="topbar__link {{ if $active }}is-active{{ end }}"
+                   href="{{ .URL }}"
+                   {{ if eq .Params.newTab true }}target="_blank" rel="noopener"{{ end }}>
+                    {{- .Name -}}
+                </a>
+            {{ end }}
+        </nav>
+
+        {{- with .Site.Menus.social -}}
+            <div class="topbar__social" aria-label="Social links">
+                {{ range . }}
+                    <a href="{{ .URL }}"
+                       {{ if eq (default true .Params.newTab) true }}target="_blank" rel="me noopener"{{ else }}rel="me"{{ end }}
+                       title="{{ .Name }}">
+                        {{ $icon := default "link" .Params.Icon }}
+                        {{ with $icon }}
+                            {{ partial "helper/icon" . }}
+                        {{ end }}
+                        <span class="sr-only">{{ .Name }}</span>
+                    </a>
+                {{ end }}
+            </div>
+        {{- end -}}
+    </div>
+</header>

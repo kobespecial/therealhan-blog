@@ -15,6 +15,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "DingTalk JinBuTi";
+    src: local("DingTalk JinBuTi");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --base-font-family: "Palatino", "PingFang SC", "Microsoft YaHei", serif !important;
     --article-font-family: "Palatino", "PingFang SC", "Microsoft YaHei", serif !important;
@@ -59,6 +67,149 @@ mark {
 
 html[data-theme="dark"] mark {
     background-color: rgba(255, 215, 0, 0.22);
+}
+
+/* Topbar navigation */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--body-background);
+    border-bottom: 1px solid var(--card-separator-color);
+}
+
+.topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 12px 20px;
+    max-width: 1536px;
+    margin: 0 auto;
+}
+
+.topbar__brand {
+    font-family: var(--article-font-family), var(--base-font-family);
+    font-weight: 700;
+    color: var(--card-text-color-main);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.topbar__menu {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.topbar__link {
+    color: var(--card-text-color-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.topbar__link:hover {
+    color: var(--card-text-color-main);
+    background: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .topbar__link:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.topbar__link.is-active {
+    color: var(--accent-color);
+    background: rgba(99, 102, 241, 0.12);
+}
+
+.topbar__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topbar__social a {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: var(--card-text-color-secondary);
+    background: var(--card-background);
+    box-shadow: var(--shadow-l1);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.topbar__social a:hover {
+    transform: translateY(-1px);
+    color: var(--card-text-color-main);
+}
+
+.topbar__social svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.6;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Sidebar sizing tweaks */
+.left-sidebar {
+    --sidebar-avatar-size: 140px;
+}
+
+.left-sidebar header {
+    align-items: center;
+    text-align: center;
+}
+
+.left-sidebar .site-meta {
+    align-items: center;
+}
+
+.left-sidebar .site-name {
+    font-size: 2.1rem;
+}
+
+@media (max-width: 900px) {
+    .left-sidebar {
+        --sidebar-avatar-size: 110px;
+    }
+
+    .left-sidebar .site-name {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .topbar__inner {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .topbar__menu {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .topbar__social {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Collapsible code blocks */
@@ -131,6 +282,10 @@ html[data-theme="dark"] mark {
     border-radius: 50%;
     background: #ff5f56;
     box-shadow: 18px 0 0 #fdbc40, 36px 0 0 #35cd4b;
+}
+
+.article-content .highlight pre::before {
+    content: none;
 }
 
 /* Donation footer */
@@ -232,7 +387,7 @@ html[data-theme="dark"] .donation-card__qr img {
 }
 
 .sidebar-donation {
-    margin-top: auto;
+    margin-top: 20px;
     width: 100%;
 }
 
@@ -254,7 +409,7 @@ html[data-theme="dark"] .donation-card__qr img {
     }
 
     .sidebar-donation {
-        margin-top: 0;
+        margin-top: 16px;
     }
 }
 
@@ -386,7 +541,7 @@ html[data-theme="dark"] .donation-card__qr img {
 
 /* Article Title */
 .article-list--compact .article-title {
-    font-family: var(--article-font-family), var(--base-font-family);
+    font-family: "DingTalk JinBuTi", var(--article-font-family), var(--base-font-family);
     font-size: 2.1rem;
     font-weight: 700;
     line-height: 1.3;

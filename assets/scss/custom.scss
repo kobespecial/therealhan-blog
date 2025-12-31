@@ -71,11 +71,37 @@ html[data-theme="dark"] mark {
 
 /* Topbar navigation */
 .topbar {
+    --topbar-bg: rgba(255, 255, 255, 0.96);
+    --topbar-border: rgba(15, 23, 42, 0.08);
+    --topbar-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+    --topbar-link-color: #475569;
+    --topbar-link-hover-bg: rgba(15, 23, 42, 0.06);
+    --topbar-link-active-bg: rgba(15, 23, 42, 0.08);
+    --topbar-link-active-color: #0f172a;
+    --topbar-brand-color: #0f172a;
+    --topbar-social-bg: transparent;
+    --topbar-social-border: rgba(15, 23, 42, 0.1);
+
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--body-background);
-    border-bottom: 1px solid var(--card-separator-color);
+    background: var(--topbar-bg);
+    border-bottom: 1px solid var(--topbar-border);
+    box-shadow: var(--topbar-shadow);
+    backdrop-filter: blur(6px);
+}
+
+[data-scheme="dark"] .topbar {
+    --topbar-bg: rgba(12, 18, 28, 0.96);
+    --topbar-border: rgba(148, 163, 184, 0.18);
+    --topbar-shadow: 0 1px 0 rgba(148, 163, 184, 0.1);
+    --topbar-link-color: #cbd5f5;
+    --topbar-link-hover-bg: rgba(148, 163, 184, 0.18);
+    --topbar-link-active-bg: rgba(148, 163, 184, 0.26);
+    --topbar-link-active-color: #f8fafc;
+    --topbar-brand-color: #f8fafc;
+    --topbar-social-bg: transparent;
+    --topbar-social-border: rgba(148, 163, 184, 0.2);
 }
 
 .topbar__inner {
@@ -91,7 +117,7 @@ html[data-theme="dark"] mark {
 .topbar__brand {
     font-family: var(--article-font-family), var(--base-font-family);
     font-weight: 700;
-    color: var(--card-text-color-main);
+    color: var(--topbar-brand-color);
     text-decoration: none;
     letter-spacing: 0.02em;
 }
@@ -104,7 +130,7 @@ html[data-theme="dark"] mark {
 }
 
 .topbar__link {
-    color: var(--card-text-color-secondary);
+    color: var(--topbar-link-color);
     text-decoration: none;
     font-weight: 600;
     padding: 6px 12px;
@@ -113,23 +139,61 @@ html[data-theme="dark"] mark {
 }
 
 .topbar__link:hover {
-    color: var(--card-text-color-main);
-    background: rgba(0, 0, 0, 0.06);
-}
-
-html[data-theme="dark"] .topbar__link:hover {
-    background: rgba(255, 255, 255, 0.08);
+    color: var(--topbar-brand-color);
+    background: var(--topbar-link-hover-bg);
 }
 
 .topbar__link.is-active {
-    color: var(--accent-color);
-    background: rgba(99, 102, 241, 0.12);
+    color: var(--topbar-link-active-color);
+    background: var(--topbar-link-active-bg);
 }
 
 .topbar__social {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+}
+
+.topbar__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.topbar__toggle {
+    margin: 0;
+    border: 1px solid var(--topbar-social-border);
+    background: transparent;
+    color: var(--topbar-link-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.topbar__toggle#dark-mode-toggle {
+    margin-top: 0;
+    gap: 8px;
+    color: var(--topbar-link-color);
+    font-weight: 600;
+}
+
+[data-scheme="dark"] .topbar__toggle#dark-mode-toggle {
+    color: var(--topbar-link-active-color);
+}
+
+.topbar__toggle:hover {
+    color: var(--topbar-brand-color);
+    background: var(--topbar-link-hover-bg);
+}
+
+.topbar__toggle svg {
+    width: 18px;
+    height: 18px;
 }
 
 .topbar__social a {
@@ -139,15 +203,17 @@ html[data-theme="dark"] .topbar__link:hover {
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    color: var(--card-text-color-secondary);
-    background: var(--card-background);
-    box-shadow: var(--shadow-l1);
-    transition: transform 0.2s ease, color 0.2s ease;
+    color: var(--topbar-link-color);
+    background: var(--topbar-social-bg);
+    border: 1px solid var(--topbar-social-border);
+    transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .topbar__social a:hover {
     transform: translateY(-1px);
-    color: var(--card-text-color-main);
+    color: var(--topbar-brand-color);
+    background: var(--topbar-link-hover-bg);
+    border-color: var(--topbar-link-active-bg);
 }
 
 .topbar__social svg {
@@ -206,7 +272,7 @@ html[data-theme="dark"] .topbar__link:hover {
         justify-content: center;
     }
 
-    .topbar__social {
+    .topbar__actions {
         width: 100%;
         justify-content: center;
     }

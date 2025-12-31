@@ -12,6 +12,9 @@ theme = "stack"
     defaultTheme = "dark"
     # customCSS = ["scss/custom.scss"]
 
+[params.colorScheme]
+  toggle = true
+
 [params.math]
   enable = true
   use = "katex"

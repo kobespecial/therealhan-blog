@@ -1,7 +1,7 @@
 baseURL = "https://therealhan.com/"
 languageCode = "zh-CN"
 defaultContentLanguage = "zh-cn"
-title = "寒仔的学术笔记"
+title = "欢迎光临寒舍"
 theme = "stack"
 
 [params]
@@ -14,6 +14,10 @@ theme = "stack"
 
 [params.colorScheme]
   toggle = true
+
+[params.dateFormat]
+  published = "2006/01/02"
+  lastUpdated = "2006/01/02"
 
 [params.math]
   enable = true
@@ -80,6 +84,11 @@ theme = "stack"
   name = "分类"
   url = "/categories/"
   weight = 3
+
+[[menu.main]]
+  name = "随笔"
+  url = "/blogs/"
+  weight = 4
 
 [outputs]
   home = ["HTML", "RSS"]

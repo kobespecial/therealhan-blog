@@ -13,7 +13,7 @@
                     <img src="{{ .src }}" width="300" height="300" class="site-logo" loading="lazy" alt="Avatar">
                 {{ else }}
                     {{ $avatar := resources.Get (.src) }}
-                    
+
                     {{ if $avatar }}
                         {{ $avatarResized := $avatar.Resize "300x" }}
                         <img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
@@ -29,7 +29,7 @@
             </figure>
             {{ end }}
         {{ end }}
-        
+
         <div class="site-meta">
             <h1 class="site-name"><a href="{{ .Site.BaseURL | relLangURL }}">{{ .Site.Title }}</a></h1>
             <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
@@ -57,8 +57,10 @@
             <div class="donation-card__qr">
                 <div class="donation-card__qr-label">WeChat Pay</div>
                 <img src="{{ $wechat.RelPermalink }}" alt="WeChat Pay QR" loading="lazy" />
+                <div class="donation-card__note">No cryptocurrency donations accepted</div>
             </div>
         </section>
+        <div class="donation-card__motto">好 过 纯 净 的 嘴 脸<br>被 媚 俗 的 唇 扭 转</div>
     </div>
     {{- end }}
 </aside>

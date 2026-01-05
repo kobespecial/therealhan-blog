@@ -86,7 +86,7 @@ theme = "stack"
   weight = 3
 
 [[menu.main]]
-  name = "随笔"
+  name = "碎碎念"
   url = "/blogs/"
   weight = 4
 

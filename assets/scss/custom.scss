@@ -42,6 +42,15 @@ pre,
     -moz-font-feature-settings: "liga" 1, "calt" 1;
 }
 
+.article-content pre.mermaid {
+    background: transparent;
+    padding: 0;
+}
+
+.article-content pre.mermaid svg {
+    background: transparent;
+}
+
 /* Custom styles for article summary */
 .article-summary {
     margin-top: 0.75rem;
@@ -298,6 +307,7 @@ html[data-theme="dark"] mark {
 /* Sidebar sizing tweaks */
 .left-sidebar {
     --sidebar-avatar-size: 140px;
+    --sidebar-element-separation: 16px;
 }
 
 .left-sidebar header {
@@ -320,6 +330,13 @@ html[data-theme="dark"] mark {
 
     .left-sidebar .site-name {
         font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .left-sidebar {
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
 }
 
@@ -491,7 +508,7 @@ html[data-theme="dark"] .donation-card__logo {
 }
 
 .donation-card__motto {
-    margin-top: 20px;
+    margin-top: 14px;
     color: var(--card-text-color-secondary);
     font-size: 1.5rem;
     line-height: 1.9;
@@ -528,7 +545,7 @@ html[data-theme="dark"] .donation-card__qr img {
 }
 
 .sidebar-donation {
-    margin-top: 20px;
+    margin-top: 8px;
     width: 100%;
 }
 
@@ -552,6 +569,34 @@ html[data-theme="dark"] .donation-card__qr img {
     .sidebar-donation {
         margin-top: 16px;
     }
+}
+
+@media (max-width: 900px) {
+    .sidebar-donation {
+        display: none;
+    }
+}
+
+/* Smaller TOC widget to reveal more below */
+.widget--toc #TableOfContents {
+    max-height: 60vh;
+    font-size: 1.4rem;
+    line-height: 1.35;
+}
+
+.widget--toc #TableOfContents li {
+    margin: 8px 0 8px 16px;
+    padding: 2px 4px;
+}
+
+.widget--toc #TableOfContents li > ol,
+.widget--toc #TableOfContents li > ul {
+    margin-top: 6px;
+    padding-left: 8px;
+}
+
+.widget--toc #TableOfContents li a:first-of-type::before {
+    margin-right: 4px;
 }
 
 /* Random illustration widget */
@@ -609,6 +654,10 @@ html[data-theme="dark"] .donation-card__qr img {
     object-fit: cover;
     transition: opacity 0.3s ease;
     opacity: 0;
+}
+
+.random-illustration__img.is-loaded {
+    opacity: 1;
 }
 
 .random-illustration__placeholder {

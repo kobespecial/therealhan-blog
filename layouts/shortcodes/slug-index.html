@@ -1,0 +1,28 @@
+{{- $sections := slice "posts" "blogs" -}}
+{{- $pages := where .Site.RegularPages "Section" "in" $sections -}}
+{{- $pages = sort $pages "Title" -}}
+{{- if gt (len $pages) 0 -}}
+<table class="slug-index">
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>栏目</th>
+            <th>Slug</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{- range $pages -}}
+            {{- $slug := default .File.ContentBaseName (default .Slug .Params.slug) -}}
+            <tr>
+                <td>{{ .Title }}</td>
+                <td>{{ .Section }}</td>
+                <td><code>{{ $slug }}</code></td>
+                <td><a href="{{ .RelPermalink }}">{{ .RelPermalink }}</a></td>
+            </tr>
+        {{- end -}}
+    </tbody>
+</table>
+{{- else -}}
+<p>暂无文章。</p>
+{{- end -}}
